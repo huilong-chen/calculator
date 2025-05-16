@@ -1,0 +1,178 @@
+/* 基础样式重置 */
+/* 模式切换按钮样式 */
+.mode-switch {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.mode-button {
+    flex: 1;
+    padding: 8px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2a2d37;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-button.active {
+    background-color: #26fed7;
+    color: #22252d;
+}
+
+/* 汇率转换按钮样式 */
+.key-exchange {
+    background-color: #2a2d37;
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.key-exchange:hover {
+    background-color: #33363f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* 计算器容器样式 */
+.calculator {
+    width: 320px;
+    background-color: #22252d;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* 显示屏样式 */
+.calculator-display {
+    background-color: #22252d;
+    color: #fff;
+    text-align: right;
+    padding: 20px;
+    font-size: 2.5rem;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#display {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 按键区域样式 */
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+/* 汇率转换按钮布局 */
+.key-exchange {
+    grid-column: span 2;
+}
+
+/* 汇率转换模式下的显示规则 */
+.exchange-mode .key-operator,
+.exchange-mode .key-equals {
+    display: none;
+}
+
+.calculator-mode .key-exchange {
+    display: none;
+}
+
+/* 确保在汇率模式下数字键布局正确 */
+.exchange-mode .calculator-keys {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* 按钮基础样式 */
+button {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 15px;
+    transition: all 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* 数字按钮样式 */
+.key-number {
+    background-color: #2a2d37;
+    color: #fff;
+}
+
+.key-number:hover {
+    background-color: #33363f;
+}
+
+/* 运算符按钮样式 */
+.key-operator {
+    background-color: #2a2d37;
+    color: #26fed7;
+}
+
+.key-operator:hover {
+    background-color: #33363f;
+}
+
+/* 清除按钮样式 */
+.key-clear {
+    background-color: #2a2d37;
+    color: #fc5c65;
+}
+
+.key-clear:hover {
+    background-color: #33363f;
+}
+
+/* 等号按钮样式 */
+.key-equals {
+    background-color: #26fed7;
+    color: #22252d;
+    grid-row: span 2;
+}
+
+.key-equals:hover {
+    background-color: #20d6b5;
+}
+
+/* 零按钮样式 - 占据两列 */
+#zero {
+    grid-column: span 2;
+}
+
+/* 响应式设计 */
+@media (max-width: 400px) {
+    .calculator {
+        width: 100%;
+        border-radius: 0;
+    }
+}

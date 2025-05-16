@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器 - 带汇率转换</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="mode-switch">
+            <button id="calc-mode" class="mode-button active">计算器</button>
+            <button id="exchange-mode" class="mode-button">汇率转换</button>
+        </div>
+        <div class="calculator-display">
+            <div id="display">0</div>
+        </div>
+        <div class="calculator-keys">
+            <!-- 第一行 -->
+            <button class="key-clear" id="clear">C</button>
+            <button class="key-operator" id="backspace">⌫</button>
+            <button class="key-operator" id="divide">÷</button>
+            <button class="key-operator" id="multiply">×</button>
+            
+            <!-- 汇率转换按钮 -->
+            <button class="key-exchange" id="usd-to-cny">$ → ¥</button>
+            <button class="key-exchange" id="cny-to-usd">¥ → $</button>
+            
+            <!-- 数字按钮 -->
+            <button class="key-number" id="seven">7</button>
+            <button class="key-number" id="eight">8</button>
+            <button class="key-number" id="nine">9</button>
+            <button class="key-operator" id="subtract">-</button>
+            
+            <!-- 第三行 -->
+            <button class="key-number" id="four">4</button>
+            <button class="key-number" id="five">5</button>
+            <button class="key-number" id="six">6</button>
+            <button class="key-operator" id="add">+</button>
+            
+            <!-- 第四行 -->
+            <button class="key-number" id="one">1</button>
+            <button class="key-number" id="two">2</button>
+            <button class="key-number" id="three">3</button>
+            <button class="key-equals" id="equals">=</button>
+            
+            <!-- 第五行 -->
+            <button class="key-number" id="zero">0</button>
+            <button class="key-decimal" id="decimal">.</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
