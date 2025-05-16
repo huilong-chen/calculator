@@ -4,6 +4,7 @@ const buttons = document.querySelectorAll('button');
 const calculator = document.querySelector('.calculator');
 const calcModeBtn = document.getElementById('calc-mode');
 const exchangeModeBtn = document.getElementById('exchange-mode');
+const tempModeBtn = document.getElementById('temp-mode');
 
 // 计算器状态变量
 let currentInput = '0';       // 当前输入
@@ -11,6 +12,7 @@ let previousInput = '';       // 上一次输入
 let operation = null;         // 当前操作符
 let resetScreen = false;      // 是否需要重置屏幕
 let isExchangeMode = false;   // 是否为汇率转换模式
+let isTempMode = false;      // 是否为温度转换模式
 
 // 汇率设置（1美元 = 7.1人民币）
 const USD_TO_CNY_RATE = 7.1;
@@ -18,16 +20,38 @@ const USD_TO_CNY_RATE = 7.1;
 // 模式切换函数
 function switchMode(mode) {
     isExchangeMode = mode === 'exchange';
+    isTempMode = mode === 'temp';
+    
+    // 移除所有模式类
+    calculator.classList.remove('exchange-mode', 'temp-mode');
+    calcModeBtn.classList.remove('active');
+    exchangeModeBtn.classList.remove('active');
+    tempModeBtn.classList.remove('active');
+    
+    // 设置新的模式
     if (isExchangeMode) {
         calculator.classList.add('exchange-mode');
         exchangeModeBtn.classList.add('active');
-        calcModeBtn.classList.remove('active');
+    } else if (isTempMode) {
+        calculator.classList.add('temp-mode');
+        tempModeBtn.classList.add('active');
     } else {
-        calculator.classList.remove('exchange-mode');
         calcModeBtn.classList.add('active');
-        exchangeModeBtn.classList.remove('active');
     }
+    
     clearCalculator();
+}
+
+// 温度转换函数
+function convertTemperature(temp, toCelsius) {
+    if (isNaN(temp)) return '0';
+    if (toCelsius) {
+        // 华氏度转摄氏度
+        return ((temp - 32) * 5 / 9).toFixed(1);
+    } else {
+        // 摄氏度转华氏度
+        return (temp * 9 / 5 + 32).toFixed(1);
+    }
 }
 
 // 汇率转换函数
@@ -171,6 +195,9 @@ buttons.forEach(button => {
             case 'exchange-mode':
                 switchMode('exchange');
                 break;
+            case 'temp-mode':
+                switchMode('temp');
+                break;
             case 'usd-to-cny':
                 if (isExchangeMode) {
                     const amount = parseFloat(currentInput);
@@ -182,6 +209,20 @@ buttons.forEach(button => {
                 if (isExchangeMode) {
                     const amount = parseFloat(currentInput);
                     currentInput = convertCurrency(amount, false);
+                    resetScreen = true;
+                }
+                break;
+            case 'c-to-f':
+                if (isTempMode) {
+                    const temp = parseFloat(currentInput);
+                    currentInput = convertTemperature(temp, false);
+                    resetScreen = true;
+                }
+                break;
+            case 'f-to-c':
+                if (isTempMode) {
+                    const temp = parseFloat(currentInput);
+                    currentInput = convertTemperature(temp, true);
                     resetScreen = true;
                 }
                 break;

@@ -34,6 +34,18 @@
     background-color: #33363f;
 }
 
+/* 温度转换按钮样式 */
+.key-temp {
+    background-color: #2a2d37;
+    color: #ff6b6b;
+    font-size: 1.2rem;
+    grid-column: span 2;
+}
+
+.key-temp:hover {
+    background-color: #33363f;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -93,13 +105,21 @@ body {
     grid-column: span 2;
 }
 
-/* 汇率转换模式下的显示规则 */
+/* 模式显示规则 */
 .exchange-mode .key-operator,
-.exchange-mode .key-equals {
+.exchange-mode .key-equals,
+.exchange-mode .key-temp {
     display: none;
 }
 
-.calculator-mode .key-exchange {
+.temp-mode .key-operator,
+.temp-mode .key-equals,
+.temp-mode .key-exchange {
+    display: none;
+}
+
+.calculator-mode .key-exchange,
+.calculator-mode .key-temp {
     display: none;
 }
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>计算器 - 带汇率转换</title>
+    <title>计算器 - 带汇率和温度转换</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,6 +11,7 @@
         <div class="mode-switch">
             <button id="calc-mode" class="mode-button active">计算器</button>
             <button id="exchange-mode" class="mode-button">汇率转换</button>
+            <button id="temp-mode" class="mode-button">温度转换</button>
         </div>
         <div class="calculator-display">
             <div id="display">0</div>
@@ -23,8 +24,12 @@
             <button class="key-operator" id="multiply">×</button>
             
             <!-- 汇率转换按钮 -->
-            <button class="key-exchange" id="usd-to-cny">$ → ¥</button>
-            <button class="key-exchange" id="cny-to-usd">¥ → $</button>
+            <button class="key-exchange exchange-buttons" id="usd-to-cny">$ → ¥</button>
+            <button class="key-exchange exchange-buttons" id="cny-to-usd">¥ → $</button>
+            
+            <!-- 温度转换按钮 -->
+            <button class="key-temp temp-buttons" id="c-to-f">°C → °F</button>
+            <button class="key-temp temp-buttons" id="f-to-c">°F → °C</button>
             
             <!-- 数字按钮 -->
             <button class="key-number" id="seven">7</button>
